@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986283479794",
+    "project_id": "shipperapp-60ff4",
+    "storage_bucket": "shipperapp-60ff4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986283479794:android:9b22c37cd369edce87b66b",
+        "android_client_info": {
+          "package_name": "com.example.shipper_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986283479794-82jca7rduigqoqlktl7g3o5rulhfjl2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfBc4_tuu5mI4Kgc-1YKaS37_HLwyozkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986283479794-82jca7rduigqoqlktl7g3o5rulhfjl2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
