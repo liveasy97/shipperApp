@@ -10,15 +10,13 @@ import 'package:shipper_app/screens/findLoadScreen.dart';
 import 'package:shipper_app/widgets/accountNotVerifiedWidget.dart';
 import 'package:shipper_app/widgets/bonusWidget.dart';
 import 'package:shipper_app/widgets/buttons/helpButton.dart';
-import 'package:shipper_app/widgets/buyGpsWidget.dart';
 import 'package:shipper_app/widgets/drawerWidget.dart';
 import 'package:shipper_app/widgets/liveasyTitleTextWidget.dart';
 import 'package:shipper_app/widgets/referAndEarnWidget.dart';
 import 'package:shipper_app/widgets/searchLoadWidget.dart';
-import 'package:shipper_app/widgets/suggestedLoadWidgetHeader.dart';
-import 'package:shipper_app/widgets/suggestedLoadsWidget.dart';
 import 'package:provider/provider.dart';
-import 'package:shipper_app/functions/documentApi/getDocument.dart';
+import 'package:shipper_app/widgets/buttons/postLoadButton.dart';
+
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -108,13 +106,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 100,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    controller: ScrollController(initialScrollOffset: 110),
+                    controller: ScrollController(initialScrollOffset: 0),
                     children: [
+                      SizedBox(
+                        width: space_4,
+                      ),
                       ReferAndEarnWidget(),
                       SizedBox(
                         width: space_4,
                       ),
                       BonusWidget(),
+                      SizedBox(
+                        width: space_4,
+                      ),
                     ],
                   ),
                 ),
@@ -140,16 +144,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 //   ),
                 // ),
 
-                Expanded(
-                  child: Center(
-                    child: Text(
-                        "Home Screen",
-                        style: TextStyle(
-                            fontSize: 32
-                        )
-                    ),
-                  )
+                Container(
+                  margin: EdgeInsets.only(
+                    top: space_6,
+                    left: space_7,
+                    right: space_7,
+                  ),
+                  child: Image(
+                    image: AssetImage('assets/images/EmptyBox.jpeg'),
+                  ),
 
+                ),
+                // Container(
+                //     alignment: Alignment.bottomCenter,
+                //   margin: EdgeInsets.only(bottom: 25),
+                //     child: PostButtonLoad()),
+                Expanded(
+                  // alignment: Alignment.bottomCenter,
+                  child: Container(
+                      alignment: Alignment.bottomCenter,
+                      margin: EdgeInsets.only(bottom: 25),
+                      child: PostButtonLoad()),
                 )
               ],
             ),

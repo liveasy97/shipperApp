@@ -108,7 +108,8 @@ class _MyLoadsScreenState extends State<MyLoadsScreen> {
                                   loadDetailsScreenModel: myLoadList[index],
                                 ),
                     ),
-                  ));
+        )
+    );
   }
 
   getDataByPostLoadId(int i) async {
