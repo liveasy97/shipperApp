@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 getDriverDetailsFromDriverId(driverId) async {
   var jsonData;
   // final String driverApiUrl = FlutterConfig.get("driverApiUrl").toString();
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   http.Response response = await http.get(Uri.parse("$driverApiUrl/$driverId"));
   try {

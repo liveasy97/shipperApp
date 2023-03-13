@@ -14,7 +14,7 @@ import '/screens/PostLoadScreens/PostLoadScreenLoacationDetails.dart';
 // ignore: must_be_immutable
 class PostButtonLoad extends StatelessWidget {
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   @override
   Widget build(BuildContext context) {

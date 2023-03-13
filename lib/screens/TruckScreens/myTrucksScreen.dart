@@ -30,7 +30,7 @@ class MyTrucks extends StatefulWidget {
 class _MyTrucksState extends State<MyTrucks> {
   //TransporterId controller
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   //Scroll Controller for Pagination
   ScrollController scrollController = ScrollController();

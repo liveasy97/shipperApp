@@ -30,7 +30,7 @@ class BiddingScreens extends StatefulWidget {
 
 class _BiddingScreensState extends State<BiddingScreens> {
   // final String biddingApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String biddingApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String biddingApiUrl = dotenv.get('biddingApiUrl');
 
   int i = 0;
 

@@ -7,20 +7,20 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '/controller/transporterIdController.dart';
 
 // String traccarPass = FlutterConfig.get("traccarPass");
-String traccarPass = dotenv.env['traccarPass'].toString();
+String traccarPass = dotenv.get('traccarPass');
 
 String? current_lang;
 // String traccarUser = FlutterConfig.get("traccarUser");
-String traccarUser = dotenv.env['traccarUser'].toString();
+String traccarUser = dotenv.get('traccarUser');
 
 //to change authorization from admin to user
 // TransporterIdController transporterIdController =
-// Get.find<TransporterIdController>();
+// Get.put(TransporterIdController());
 // String traccarUser = transporterIdController.mobileNum.value;
 
 class DeviceApiCalls {
   // String traccarApi = FlutterConfig.get("traccarApi");
-  String traccarApi = dotenv.env['traccarApi'].toString();
+  String traccarApi = dotenv.get('traccarApi');
 
   late String _truckId;
 

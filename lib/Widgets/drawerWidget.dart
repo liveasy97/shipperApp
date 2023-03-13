@@ -39,7 +39,7 @@ class DrawerWidget extends StatelessWidget {
     (imageUrl == "no profile" ? "assets/icons/defaultAccountIcon.png" : imageUrl);
     name = userName.length > 17 ? userName.substring(0, 15) + "..." : userName;
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     return ClipRRect(
       borderRadius: BorderRadius.only(
           topRight: Radius.circular(radius_6),

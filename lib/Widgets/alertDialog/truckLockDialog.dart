@@ -41,7 +41,7 @@ class TruckLockDialog extends StatefulWidget {
 
 class _TruckLockDialogState extends State<TruckLockDialog> {
   final lockStorage = GetStorage();
-  LockUnlockController lockUnlockController = Get.find<LockUnlockController>();
+  LockUnlockController lockUnlockController = Get.put(LockUnlockController());
   var lockState;
   var routeHistory;
   @override

@@ -7,7 +7,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 getMMIToken()async{
-  TokenMMIController tokenMMIController = Get.find<TokenMMIController>();
+  TokenMMIController tokenMMIController = Get.put(TokenMMIController());
   String token;
   if (tokenMMIController.tokenMMI.value == "") {
     token = await getMapMyIndiaToken();
@@ -42,7 +42,7 @@ getMMIToken()async{
 // }
 Future<List<AutoFillMMIModel>> fillCityName(String cityName) async {
   if (cityName.length > 1) {
-    // TokenMMIController tokenMMIController = Get.find<TokenMMIController>();
+    // TokenMMIController tokenMMIController = Get.put(TokenMMIController());
     // String token;
     // if (tokenMMIController.tokenMMI.value == "") {
     //   token = await getMapMyIndiaToken();

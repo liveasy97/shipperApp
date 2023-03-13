@@ -9,11 +9,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '/models/onGoingCardModel.dart';
 
 getOngoingDataWithPageNo(int i) async {
-  // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
-  TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+  TransporterIdController transporterIdController = Get.put(TransporterIdController());
   List<OngoingCardModel> modelList = [];
   http.Response response = await http.get(Uri.parse(
       '$bookingApiUrl?postLoadId=${transporterIdController.transporterId.value}&completed=false&cancel=false&pageNo=$i'));

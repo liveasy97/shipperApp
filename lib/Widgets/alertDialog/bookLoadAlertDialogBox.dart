@@ -61,7 +61,7 @@ class _BookLoadAlertDialogBoxState extends State<BookLoadAlertDialogBox> {
   List<DropdownMenuItem<String>> dropDownList = [];
   List<DropdownMenuItem<String>> dropDownListT = [];
   SelectedDriverController selectedDriverController =
-      Get.find<SelectedDriverController>();
+      Get.put(SelectedDriverController());
 
   getDriverList() async {
     List temp;

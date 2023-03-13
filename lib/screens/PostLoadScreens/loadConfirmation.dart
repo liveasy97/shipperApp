@@ -27,7 +27,7 @@ class _LoadConfirmationState extends State<LoadConfirmation> {
         .addPostFrameCallback((_) => providerData.updateUnitValue());
     // providerData.updateLoadWidget(true);
     PostLoadVariablesController postLoadVariables =
-        Get.find<PostLoadVariablesController>();
+        Get.put(PostLoadVariablesController());
     return Scaffold(
       backgroundColor: statusBarColor,
       body: SafeArea(

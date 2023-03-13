@@ -17,7 +17,7 @@ class CompletedTextField extends StatefulWidget {
 
 TextEditingController completedController = TextEditingController();
 CompletedDateController completedDateController =
-    Get.find<CompletedDateController>();
+    Get.put(CompletedDateController());
 
 class _CompletedTextFieldState extends State<CompletedTextField> {
   Future<void> _selectDate(BuildContext context) async {

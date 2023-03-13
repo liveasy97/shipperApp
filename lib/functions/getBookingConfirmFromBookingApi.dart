@@ -9,11 +9,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<List<BookingModel>> getBookingConfirmFromBookingApi() async {
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   var jsonData;
   List<BookingModel> bookingCard = [];
   // final String bidApiUrl = FlutterConfig.get("biddingApiUrl").toString();
-  final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String bidApiUrl = dotenv.get('biddingApiUrl');
 
   http.Response response = await http.get(Uri.parse(
       "$bidApiUrl?transporterId=${transporterIdController.transporterId}"));

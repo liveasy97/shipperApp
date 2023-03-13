@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 getDocumentApiCall(String bookingId, String docType) async {
-  // TransporterIdController tIdController = Get.find<TransporterIdController>();
+  // TransporterIdController tIdController = Get.put(TransporterIdController());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now().subtract(Duration(hours: 5, minutes: 30))
   //     .toIso8601String())
@@ -23,7 +23,7 @@ getDocumentApiCall(String bookingId, String docType) async {
     // String body = json.encode(datanew2);
     final String documentApiUrl =
         // FlutterConfig.get('documentApiUrl').toString();
-        dotenv.env['documentApiUrl'].toString();
+        dotenv.get('documentApiUrl');
     final response = await http.get(Uri.parse("$documentApiUrl/$bookingId"));
     // headers: <String, String>{
     //   'Content-Type': 'application/json; charset=UTF-8',

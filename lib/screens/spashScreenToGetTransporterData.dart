@@ -11,7 +11,7 @@ import '/screens/navigationScreen.dart';
 class SplashScreenToGetTransporterData extends StatefulWidget {
   final String mobileNum;
 
-  SplashScreenToGetTransporterData({required this.mobileNum});
+  SplashScreenToGetTransporterData({super.key, required this.mobileNum});
 
   @override
   _SplashScreenToGetTransporterDataState createState() =>

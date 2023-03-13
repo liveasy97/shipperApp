@@ -13,10 +13,10 @@ import 'loadOnGoingOrdersData.dart';
 
 onGoingOrdersApiCall(int i) async {
   // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   // List<BookingModel> modelList = [];
   List<OngoingCardModel?> modelList = [];
   print("transported id");

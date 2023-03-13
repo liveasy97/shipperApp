@@ -37,7 +37,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   late String from;
   late String to;
   DateTime now = DateTime.now().subtract(Duration(hours: 5, minutes: 30));
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
   NavigationIndexController navigationIndex =
       Get.put(NavigationIndexController(), permanent: true);
   var screens = [

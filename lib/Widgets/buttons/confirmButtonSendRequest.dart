@@ -64,7 +64,7 @@ class _ConfirmButtonSendRequestState extends State<ConfirmButtonSendRequest> {
       Map datanew = {"status": "ON_GOING"};
       String body = json.encode(datanew);
       // final String loadApiUrl = FlutterConfig.get('loadApiUrl').toString();
-      final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+      final String loadApiUrl = dotenv.get('loadApiUrl');
 
       final response = await http.put(
           Uri.parse("$loadApiUrl/" +
@@ -85,7 +85,7 @@ class _ConfirmButtonSendRequestState extends State<ConfirmButtonSendRequest> {
   Widget build(BuildContext context) {
     ProviderData providerData = Provider.of<ProviderData>(context);
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     getBookingData() async {
       String? bookResponse = "";
       if (bookResponse == "") {

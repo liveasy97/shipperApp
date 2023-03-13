@@ -13,7 +13,7 @@ Future<String> updateTransporterApi(
       Get.put(TransporterIdController());
   final String transporterApiUrl =
       // FlutterConfig.get("transporterApiUrl").toString();
-         dotenv.env['transporterApiUrl'].toString();
+         dotenv.get('transporterApiUrl');
 
 
   Map data = {"accountVerificationInProgress": accountVerificationInProgress};

@@ -17,7 +17,7 @@ import 'alertDialog/verifyAccountNotifyAlertDialogWithCall.dart';
 
 // ignore: must_be_immutable
 class HomeScreenLoadsCard extends StatelessWidget {
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
 
   final LoadDetailsScreenModel loadDetailsScreenModel;
 

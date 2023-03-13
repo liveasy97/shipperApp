@@ -21,13 +21,13 @@ class BiddingScreenTransporterSide extends StatefulWidget {
 class _BiddingScreenTransporterSideState
     extends State<BiddingScreenTransporterSide> {
   // final String biddingApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String biddingApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String biddingApiUrl = dotenv.get('biddingApiUrl');
 
 
   int i = 0;
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   //Scroll Controller for Pagination
   ScrollController scrollController = ScrollController();

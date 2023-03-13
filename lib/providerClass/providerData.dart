@@ -543,7 +543,7 @@ class ProviderData extends ChangeNotifier {
 
   void clearBookingDate() {
     PostLoadVariablesController postLoadVariables =
-        Get.find<PostLoadVariablesController>();
+        Get.put(PostLoadVariablesController());
     postLoadVariables.updateBookingDate("");
     notifyListeners();
   }
@@ -583,14 +583,14 @@ class ProviderData extends ChangeNotifier {
 
   void updateBookingDate(value) {
     PostLoadVariablesController postLoadVariables =
-        Get.find<PostLoadVariablesController>();
+        Get.put(PostLoadVariablesController());
     postLoadVariables.updateBookingDate(value);
     notifyListeners();
   }
 
   bool postLoadScreenOneButton() {
     PostLoadVariablesController postLoadVariables =
-        Get.find<PostLoadVariablesController>();
+        Get.put(PostLoadVariablesController());
     if (loadingPointCityPostLoad != "" &&
         postLoadVariables.bookingDate.value != "" &&
         unloadingPointCityPostLoad != '') {

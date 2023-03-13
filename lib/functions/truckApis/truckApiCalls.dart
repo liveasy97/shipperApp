@@ -12,11 +12,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class TruckApiCalls {
   // retrieving TRUCKAPIURL  from env file
   // final String truckApiUrl = FlutterConfig.get('truckApiUrl');
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
   // transporterId controller
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   //truckId controller ..used to store truckId for latest truck
   TruckIdController truckIdController = TruckIdController();

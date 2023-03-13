@@ -56,7 +56,7 @@ Future<String?> putLoadAPI(
     var jsonData;
 
     // final String loadApiUrl = FlutterConfig.get('loadApiUrl').toString();
-    final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+    final String loadApiUrl = dotenv.get('loadApiUrl');
 
     final response = await http.put(Uri.parse("$loadApiUrl/$loadId"),
         headers: <String, String>{

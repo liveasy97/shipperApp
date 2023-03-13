@@ -35,12 +35,12 @@ class LoadConfirmationScreenButton extends StatelessWidget {
     PostLoadErrorController postLoadErrorController =
         Get.put(PostLoadErrorController());
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     TransporterIdController transporterIdController =
-        Get.find<TransporterIdController>();
+        Get.put(TransporterIdController());
     ProviderData providerData = Provider.of<ProviderData>(context);
     PostLoadVariablesController postLoadVariables =
-        Get.find<PostLoadVariablesController>();
+        Get.put(PostLoadVariablesController());
     getData() async {
       // print(transporterIdController.transporterId.value);
       String? loadId = '';

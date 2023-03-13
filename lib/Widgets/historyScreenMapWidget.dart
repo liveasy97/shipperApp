@@ -101,7 +101,7 @@ class _HistoryScreenMapWidgetState extends State<HistoryScreenMapWidget>
   var stopAddress = [];
   String? Speed;
   // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
   bool popUp = false;
   List<PolylineWayPoint> waypoints = [];
   late Uint8List markerIcon;

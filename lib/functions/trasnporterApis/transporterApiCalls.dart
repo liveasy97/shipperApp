@@ -7,7 +7,7 @@ import '/models/transporterModel.dart';
 
 class TransporterApiCalls {
   // final String transporterApiUrl = FlutterConfig.get("transporterApiUrl");
-  final String transporterApiUrl = dotenv.env['transporterApiUrl'].toString();
+  final String transporterApiUrl = dotenv.get('transporterApiUrl');
 
   Future<TransporterModel> getDataByTransporterId(String? transporterId) async {
 

@@ -15,7 +15,7 @@ class ApplyButton extends StatelessWidget {
     Get.put(TransporterIdController());
 
     TransporterIdController transporterIdController =
-        Get.find<TransporterIdController>();
+        Get.put(TransporterIdController());
     ProviderData providerData = Provider.of<ProviderData>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

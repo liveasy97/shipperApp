@@ -12,7 +12,7 @@ class LoadApiCalls {
   List<LoadApiModel> loadList = [];
 
   // final String loadApiUrl = FlutterConfig.get("loadApiUrl");
-  final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  final String loadApiUrl = dotenv.get('loadApiUrl');
 
   Future<Map> getDataByLoadId(String loadId) async {
     http.Response response = await http.get(Uri.parse('$loadApiUrl/$loadId'));
@@ -59,7 +59,7 @@ class LoadApiCalls {
   Future<void> disableActionOnLoad({String? loadId}) async {
 
     // final String loadApiUrl = FlutterConfig.get("loadApiUrl");
-    final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+    final String loadApiUrl = dotenv.get('loadApiUrl');
 
     Map<String, String> data = {"status": "EXPIRED"};
 

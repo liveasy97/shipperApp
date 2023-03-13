@@ -54,10 +54,10 @@ class _OngoingScreenOrdersState extends State<OngoingScreenOrders> {
   bool OngoingProgress = false;
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
 
   List<OngoingCardModel> modelList = [];

@@ -12,9 +12,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 getBidDataWithPageNo(int i) async {
   TransporterIdController transporterIdController =
-  Get.find<TransporterIdController>();
+  Get.put(TransporterIdController());
   // final String biddingApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String biddingApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String biddingApiUrl = dotenv.get('biddingApiUrl');
   final LoadApiCalls loadApiCalls = LoadApiCalls();
   http.Response response = await http.get(Uri.parse(
       "$biddingApiUrl?transporterId=${transporterIdController.transporterId.value}&pageNo=$i"),

@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 putDocumentApiCall(Map datanew2, String bookingId) async {
-  // TransporterIdController tIdController = Get.find<TransporterIdController>();
+  // TransporterIdController tIdController = Get.put(TransporterIdController());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now().subtract(Duration(hours: 5, minutes: 30))
   //     .toIso8601String());
@@ -22,7 +22,7 @@ putDocumentApiCall(Map datanew2, String bookingId) async {
     print(body);
     final String documentApiUrl =
         // FlutterConfig.get('documentApiUrl').toString();
-    dotenv.env['documentApiUrl'].toString();
+    dotenv.get('documentApiUrl');
 
     final response = await http.put(Uri.parse("$documentApiUrl/$bookingId"),
         headers: <String, String>{

@@ -27,7 +27,7 @@ Future<List<LoadDetailsScreenModel>> runFindLoadApiGet(
   List<LoadDetailsScreenModel> modelList = [];
 
   // final String loadApiUrl = FlutterConfig.get("loadApiUrl").toString();
-  final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  final String loadApiUrl = dotenv.get('loadApiUrl');
 
   http.Response response =
       await http.get(Uri.parse("$loadApiUrl$additionalQuery"));

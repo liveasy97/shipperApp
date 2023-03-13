@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:get/get.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:shipper_app/Web/screens/home_web.dart';
 import '/screens/SplashScreenToLogin.dart';
 import '/screens/SplashScreenToHomePage.dart';
 import '/screens/errorScreen.dart';
@@ -103,8 +105,7 @@ class _AndroidState extends State<Android> {
 
   void configOneSignel() {
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-    // String oneSignalAppId = FlutterConfig.get('oneSignalAppId').toString();
-    String oneSignalAppId = dotenv.env['oneSignalAppId'].toString();
+    String oneSignalAppId = dotenv.get('oneSignalAppId').toString();
     OneSignal.shared.setAppId(oneSignalAppId);
   }
 

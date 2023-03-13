@@ -28,7 +28,7 @@ class AddressInputGMapsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     ProviderData providerData = Provider.of<ProviderData>(context);
     // String kGoogleApiKey = FlutterConfig.get('mapKey').toString();
-    String kGoogleApiKey = dotenv.env['mapKey'].toString();
+    String kGoogleApiKey = dotenv.get('mapKey');
 
     print(controller);
     return Container(

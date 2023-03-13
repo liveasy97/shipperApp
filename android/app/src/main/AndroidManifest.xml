@@ -1,9 +1,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liveasy.shipper_app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
    <application
         android:label="Shipper App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+<!--       <provider-->
+<!--           android:name="androidx.core.content.FileProvider"-->
+<!--           android:authorities="${applicationId}.com.shekarmudaliyar.social_share"-->
+<!--           android:exported="false"-->
+<!--           android:grantUriPermissions="true"-->
+<!--           tools:replace="android:authorities">-->
+<!--           <meta-data-->
+<!--               android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--               android:resource="@xml/filepaths" />-->
+<!--       </provider>-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,5 +58,24 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyCPU872xIfRhjvtdLViTDbj0EnIBuxlcSs"/>
+
+       <service
+           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
+           android:permission="android.permission.BIND_JOB_SERVICE"
+           android:exported="false"/>
+       <receiver
+           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
+           android:exported="false"/>
+       <receiver
+           android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
+           android:exported="false"
+           android:enabled="false">
+           <intent-filter>
+               <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+           </intent-filter>
+       </receiver>
     </application>
 </manifest>

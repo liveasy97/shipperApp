@@ -9,7 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 postDriverTraccarApi(DriverName, DriverPhoneNo, TransporterId) async {
-  // TransporterIdController tIdController = Get.find<TransporterIdController>();
+  // TransporterIdController tIdController = Get.put(TransporterIdController());
 
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));
@@ -23,7 +23,7 @@ postDriverTraccarApi(DriverName, DriverPhoneNo, TransporterId) async {
     String body = json.encode(data);
     final String DriverTraccarApiUrl =
         // FlutterConfig.get('traccarApi').toString();
-           dotenv.env['traccarApi'].toString();
+           dotenv.get('traccarApi');
     final response =
         await http.post(Uri.parse("$DriverTraccarApiUrl" + "/drivers"),
             headers: <String, String>{

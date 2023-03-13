@@ -54,8 +54,7 @@ class _simpleMapState extends State<simpleMap> with WidgetsBindingObserver {
 
   Completer<GoogleMapController> _controller = Completer();
 
-  // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
 
   CustomInfoWindowController _customInfoWindowController =
       CustomInfoWindowController();

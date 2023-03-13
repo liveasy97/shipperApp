@@ -58,7 +58,7 @@ Future<String?> postLoadAPi(
     var jsonData;
 
     // final String loadApiUrl = FlutterConfig.get('loadApiUrl').toString();
-    final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+    final String loadApiUrl = dotenv.get('loadApiUrl');
 
 
     // print("loadApiUrl $loadApiUrl");

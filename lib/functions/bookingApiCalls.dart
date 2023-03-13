@@ -10,11 +10,11 @@ import '/models/BookingModel.dart';
 class BookingApiCalls {
   //TransporterIdController will be used as postId in Transporter App
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   //BookingApiUrl
   // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
 
   //to hold list of dataModels retrieved from Api

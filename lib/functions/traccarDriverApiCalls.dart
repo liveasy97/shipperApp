@@ -7,13 +7,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 TransporterIdController transporterIdController =
-    Get.find<TransporterIdController>();
+    Get.put(TransporterIdController());
 // final String driverApiUrl = FlutterConfig.get('driverApiUrl');
-final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+final String driverApiUrl = dotenv.get('driverApiUrl');
 
 String? traccarUser = transporterIdController.mobileNum.value;
 // String traccarPass = FlutterConfig.get("traccarPass");
-String traccarPass = dotenv.env['traccarPass'].toString();
+String traccarPass = dotenv.get('traccarPass');
 
 String basicAuth =
     'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));

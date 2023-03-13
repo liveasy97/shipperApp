@@ -56,12 +56,12 @@ class _SelectDriverScreenState extends State<SelectDriverScreen> {
     driverMobileNumbers.clear();
     driverNames.clear();
     // String driverApiUrl = FlutterConfig.get("driverApiUrl").toString();
-    String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+    String driverApiUrl = dotenv.get('driverApiUrl');
 
     var jsonData;
     String? traccarUser = transporterIdController.mobileNum.value;
     // String traccarPass = FlutterConfig.get("traccarPass");
-    String traccarPass = dotenv.env['traccarPass'].toString();
+    String traccarPass = dotenv.get('traccarPass');
 
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));

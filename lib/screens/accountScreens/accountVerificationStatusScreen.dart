@@ -15,7 +15,7 @@ class AccountVerificationStatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TransporterIdController transporterIdController =
-        Get.find<TransporterIdController>();
+        Get.put(TransporterIdController());
     return Scaffold(
       backgroundColor: statusBarColor,
       body: SafeArea(

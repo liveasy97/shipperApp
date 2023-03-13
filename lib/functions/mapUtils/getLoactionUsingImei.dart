@@ -13,22 +13,20 @@ import '/models/gpsDataModelForHistory.dart';
 import 'package:geocoding/geocoding.dart';
 
 // String traccarPass = FlutterConfig.get("traccarPass");
-String traccarPass = dotenv.env['traccarPass'].toString();
+String traccarPass = dotenv.get('traccarPass');
 
 String? current_lang;
 TransporterIdController transporterIdController =
-    Get.find<TransporterIdController>();
+    Get.put(TransporterIdController());
 String traccarUser = transporterIdController.mobileNum.value;
 
 class MapUtil {
-  // String gpsApiUrl = FlutterConfig.get("gpsApiUrl");
-  String gpsApiUrl = dotenv.env['gpsApiUrl'].toString();
+  String gpsApiUrl = dotenv.get("gpsApiUrl");
 
-  // String routeHistoryApiUrl = FlutterConfig.get("routeHistoryApiUrl");
-  String routeHistoryApiUrl = dotenv.env['routeHistoryApiUrl'].toString();
+  String routeHistoryApiUrl = dotenv.get("routeHistoryApiUrl");
 
   // String traccarApi = FlutterConfig.get("traccarApi");
-  String traccarApi = dotenv.env['traccarApi'].toString();
+  String traccarApi = dotenv.get('traccarApi');
 
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));

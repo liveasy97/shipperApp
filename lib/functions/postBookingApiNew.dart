@@ -10,7 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 postBookingApiNew(LoadDetailsScreenModel? loadDetailsScreenModel, truckId,
     deviceId, driverName, driverPhoneNo) async {
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
   String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now().subtract(Duration(hours: 5, minutes: 30))
   //     .toIso8601String());
@@ -37,7 +37,7 @@ postBookingApiNew(LoadDetailsScreenModel? loadDetailsScreenModel, truckId,
     };
     String body = json.encode(datanew);
     // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl').toString();
-    final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+    final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
     final response = await http.post(Uri.parse("$bookingApiUrl"),
         headers: <String, String>{

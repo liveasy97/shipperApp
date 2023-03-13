@@ -11,11 +11,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 getTruckDataWithPageNo(int i) async {
   //TransporterId controller
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   // retrieving TRUCKAPIURL  from env file
   // final String truckApiUrl = FlutterConfig.get('truckApiUrl');
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
 
   http.Response response = await http.get(Uri.parse(
@@ -53,11 +53,11 @@ getTruckDataWithPageNo(int i) async {
 getGPSTruckDataWithPageNo(int i) async {
   //TransporterId controller
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   // retrieving TRUCKAPIURL  from env file
   // final String truckApiUrl = FlutterConfig.get('truckApiUrl');
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
   http.Response response = await http.get(Uri.parse(
       '$truckApiUrl?transporterId=${transporterIdController.transporterId.value}&pageNo=$i'));

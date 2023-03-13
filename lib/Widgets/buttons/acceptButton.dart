@@ -33,7 +33,7 @@ class AcceptButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ProviderData providerData = Provider.of<ProviderData>(context);
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     if (fromTransporterSide!) {
       activeButtonCondition =
           (transporterApproved == false && shipperApproved == true);

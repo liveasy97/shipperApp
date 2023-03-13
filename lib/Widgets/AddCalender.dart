@@ -20,7 +20,7 @@ class AddCalender extends StatefulWidget {
 
 class _AddCalenderState extends State<AddCalender> {
   @override
-  PostLoadVariablesController postLoadVariables = Get.find<PostLoadVariablesController>();
+  PostLoadVariablesController postLoadVariables = Get.put(PostLoadVariablesController());
   Widget build(BuildContext context) {
     ProviderData providerData = Provider.of<ProviderData>(context);
     return Container(

@@ -9,14 +9,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '/../functions/alert_dialog.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreenWeb extends StatefulWidget {
+  const LoginScreenWeb({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenWeb> createState() => _LoginScreenWebState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenWebState extends State<LoginScreenWeb> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController otpController = TextEditingController();

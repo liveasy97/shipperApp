@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 postBookingApi(loadId, currentBid, unit, truckId, postLoadId, rate) async {
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
   String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
   var jsonData;
   try {
@@ -23,7 +23,7 @@ postBookingApi(loadId, currentBid, unit, truckId, postLoadId, rate) async {
     };
     String body = json.encode(data);
     // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl').toString();
-    final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+    final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
     final response = await http.post(Uri.parse("$bookingApiUrl"),
         headers: <String, String>{

@@ -8,7 +8,7 @@ getDocApiCallVerify(String bookingId, String docType) async {
   try {
     final String documentApiUrl =
         // FlutterConfig.get('documentApiUrl').toString();
-        dotenv.env['documentApiUrl'].toString();
+        dotenv.get('documentApiUrl');
     final response = await http.get(Uri.parse("$documentApiUrl/$bookingId"));
 
     print(response.body);

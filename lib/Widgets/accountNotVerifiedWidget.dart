@@ -8,14 +8,14 @@ import '/constants/spaces.dart';
 import '/constants/colors.dart';
 import '/controller/navigationIndexController.dart';
 
-// import '../screens/accountScreens/kycScreen.dart';
+// import '../screens/accountScreens/kycIDfyScreen.dart';
 
 class AccountNotVerifiedWidget extends StatelessWidget {
   const AccountNotVerifiedWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     return GestureDetector(
       onTap: () {
         //navigationIndexController.updateIndex(4);

@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 postDocumentApiCall(Map datanew2) async {
-  // TransporterIdController tIdController = Get.find<TransporterIdController>();
+  // TransporterIdController tIdController = Get.put(TransporterIdController());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
   // String now = DateFormat("dd-MM-yyyy").format(DateTime.now().subtract(Duration(hours: 5, minutes: 30))
   //     .toIso8601String());
@@ -21,7 +21,7 @@ postDocumentApiCall(Map datanew2) async {
     String body = json.encode(datanew2);
     final String documentApiUrl =
         // FlutterConfig.get('documentApiUrl').toString();
-    dotenv.env['documentApiUrl'].toString();
+    dotenv.get('documentApiUrl');
 
     final response = await http.post(Uri.parse("$documentApiUrl"),
         headers: <String, String>{
