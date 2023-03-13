@@ -85,7 +85,7 @@ class _ReviewTruckDetailsState extends State<ReviewTruckDetails> {
 
     // driverModel.driverName = driverModel.driverName!.length > 11 ? driverModel.driverName!.substring(0 , 9) + '..' : driverModel.driverName ;
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
 
     return Scaffold(
       body: SafeArea(

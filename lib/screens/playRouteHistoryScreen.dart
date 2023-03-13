@@ -68,7 +68,7 @@ class _PlayRouteHistoryState extends State<PlayRouteHistory>
   late CameraPosition camPosition;
   Completer<GoogleMapController> _controller = Completer();
   // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
 
   late BitmapDescriptor pinLocationIconTruck;
   var direction;

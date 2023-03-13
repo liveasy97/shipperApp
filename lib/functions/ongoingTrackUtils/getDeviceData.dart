@@ -14,15 +14,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<List<DeviceModel>> getDeviceByDeviceId(String deviceId) async {
   // String traccarUser = FlutterConfig.get("traccarUser");
-  String traccarUser = dotenv.env['traccarUser'].toString();
+  String traccarUser = dotenv.get('traccarUser');
 
   // String traccarPass = FlutterConfig.get("traccarPass");
-  String traccarPass = dotenv.env['traccarPass'].toString();
+  String traccarPass = dotenv.get('traccarPass');
 
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));
   // String traccarApi = FlutterConfig.get("traccarApi");
-  String traccarApi = dotenv.env['traccarApi'].toString();
+  String traccarApi = dotenv.get('traccarApi');
 
   try {
     http.Response response = await http.get(

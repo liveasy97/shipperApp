@@ -24,10 +24,10 @@ class _DeliveredScreenState extends State<DeliveredScreen> {
   bool DeliveredProgress = false;
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
 
   List<DeliveredCardModel> modelList = [];

@@ -14,7 +14,7 @@ Future<String> getDriverNameFromDriverApi(
   var jsonData;
   String? tempDropDownValue2;
   // final String driverApiUrl = FlutterConfig.get('driverApiUrl').toString();
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   try {
     http.Response response =

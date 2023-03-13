@@ -21,7 +21,7 @@ class BuyGPSPayButton extends StatelessWidget {
   bool isDisable = false;
   BuyGPSHudController updateButtonController = Get.put(BuyGPSHudController());
   // final String buyGPSApiUrl = FlutterConfig.get('buyGPSApiUrl');
-  final String buyGPSApiUrl = dotenv.env['buyGPSApiUrl'].toString();
+  final String buyGPSApiUrl = dotenv.get('buyGpsApiUrl');
 
   BuyGPSApiCalls buyGPSApiCalls = BuyGPSApiCalls();
   String? groupValue;

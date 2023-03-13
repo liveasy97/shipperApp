@@ -6,11 +6,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 postNotification(
     String loadingPointCityPostLoad, String unloadingPointCityPostLoad) async {
   print("post Notification triggered");
-  // String oneSignalAppId = FlutterConfig.get("oneSignalAppId").toString();
-  String oneSignalAppId = dotenv.env['oneSignalAppId'].toString();
+  String oneSignalAppId = dotenv.get("oneSignalAppId").toString();
 
-  // String oneSignalApiKey = FlutterConfig.get("oneSignalApiKey").toString();
-  String oneSignalApiKey = dotenv.env['oneSignalApiKey'].toString();
+  String oneSignalApiKey = dotenv.get("oneSignalApiKey").toString();
 
   Map data = {
     "included_segments": ["Subscribed Users"],

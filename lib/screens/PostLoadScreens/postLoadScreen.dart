@@ -13,6 +13,8 @@ import '/widgets/buttons/postLoadButton.dart';
 import 'package:provider/provider.dart';
 
 class PostLoadScreen extends StatefulWidget {
+  const PostLoadScreen({super.key});
+
   @override
   _PostLoadScreenState createState() => _PostLoadScreenState();
 }

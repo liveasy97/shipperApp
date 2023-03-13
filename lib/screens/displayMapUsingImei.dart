@@ -88,7 +88,7 @@
 //     super.dispose();
 //     shouldRun = false;
 //   }
-//   GpsDataController gpsDataController = Get.find<GpsDataController>();
+//   GpsDataController gpsDataController = Get.put(GpsDataController());
 //   bool shouldRun = true;
 //
 //   void getGpsDataByImei({String? imei}) async {

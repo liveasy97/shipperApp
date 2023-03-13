@@ -37,7 +37,7 @@ class _BuyGpsScreenState extends State<BuyGpsScreen> {
   String? _groupValue;
   String? _durationGroupValue;
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   TruckModel truckModel = TruckModel();
   ScrollController scrollController = ScrollController();
   String? truckID;
@@ -46,10 +46,10 @@ class _BuyGpsScreenState extends State<BuyGpsScreen> {
   late List jsonData;
   int i = 0;
   // final String truckApiUrl = FlutterConfig.get('truckApiUrl');
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
   // final String buyGPSApiUrl = FlutterConfig.get('buyGPSApiUrl');
-  final String buyGPSApiUrl = dotenv.env['buyGPSApiUrl'].toString();
+  final String buyGPSApiUrl = dotenv.get('buyGpsApiUrl');
 
   BuyGPSApiCalls buyGPSApiCalls = BuyGPSApiCalls();
   Position? _currentPosition;

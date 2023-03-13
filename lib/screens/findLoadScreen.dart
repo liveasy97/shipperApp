@@ -29,11 +29,11 @@ class _FindLoadScreenState extends State<FindLoadScreen> {
   TextEditingController controller2 = TextEditingController();
   var findLoadApiData;
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   @override
   Widget build(BuildContext context) {
     if(Get.isRegistered<TokenMMIController>()){
-      Get.find<TokenMMIController>();
+      Get.put(TokenMMIController());
     }else{Get.put(TokenMMIController());}
     getMMIToken();
     var providerData = Provider.of<ProviderData>(context, listen: false);

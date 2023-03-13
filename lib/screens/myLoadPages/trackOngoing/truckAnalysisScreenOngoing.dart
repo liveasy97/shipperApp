@@ -18,8 +18,7 @@ import 'package:http/http.dart' as http;
 import '/widgets/truckAnalysisDoughnut.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-// String routeDataApi = FlutterConfig.get("routeDataApiUrl");
-String routeDataApi = dotenv.env['routeDataApiUrl'].toString();
+String routeDataApi = dotenv.get("routeDataApiUrl");
 
 class truckAnalysisScreen extends StatefulWidget {
   var recentStops;

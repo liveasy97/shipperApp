@@ -69,7 +69,7 @@ class _MapAllTrucksState extends State<MapAllTrucks>
   MapUtil mapUtil = MapUtil();
   List<LatLng> latlng = [];
   // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
 
   bool popUp = false;
   late Uint8List markerIcon;

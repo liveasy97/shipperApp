@@ -24,13 +24,13 @@ import 'package:provider/provider.dart';
 // ignore: must_be_immutable
 class AccountVerificationPage2 extends StatelessWidget {
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   HudController hudController = Get.put(HudController());
 
   @override
   Widget build(BuildContext context) {
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     var providerData = Provider.of<ProviderData>(context);
     return Scaffold(
       backgroundColor: statusBarColor,

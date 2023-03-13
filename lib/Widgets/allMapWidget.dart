@@ -60,7 +60,7 @@ class _AllMapWidgetState extends State<AllMapWidget>
   MapUtil mapUtil = MapUtil();
   List<LatLng> latlng = [];
   // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
   bool popUp = false;
   late Uint8List markerIcon;
   var markerslist;
@@ -77,7 +77,7 @@ class _AllMapWidgetState extends State<AllMapWidget>
   double zoom = 4.5;
 
   // TrucksNearUserController trucksNearUserController =
-  //     Get.find<TrucksNearUserController>();
+  //     Get.put(TrucksNearUserController());
 
   @override
   void initState() {

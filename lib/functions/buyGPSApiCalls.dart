@@ -7,10 +7,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class BuyGPSApiCalls {
   // final String buyGPSApiUrl = FlutterConfig.get('buyGPSApiUrl');
-  final String buyGPSApiUrl = dotenv.env['buyGPSApiUrl'].toString();
+  final String buyGPSApiUrl = dotenv.get('buyGpsApiUrl');
 
   // transporterId controller
-  TransporterIdController transporterIdController = Get.find<TransporterIdController>();
+  TransporterIdController transporterIdController = Get.put(TransporterIdController());
 
   String? _gpsId;
 

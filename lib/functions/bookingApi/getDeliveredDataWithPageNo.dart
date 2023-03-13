@@ -11,10 +11,10 @@ import '/models/deliveredCardModel.dart';
 
 getDeliveredDataWithPageNo(int i) async {
   // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   List<DeliveredCardModel> modelList = [];
   http.Response response = await http.get(Uri.parse(
       '$bookingApiUrl?postLoadId=${transporterIdController.transporterId.value}&completed=true&cancel=false&pageNo=$i'));

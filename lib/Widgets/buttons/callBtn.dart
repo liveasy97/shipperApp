@@ -36,7 +36,7 @@ class callBtn extends StatelessWidget {
     }
   }
 
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
 
   @override
   Widget build(BuildContext context) {

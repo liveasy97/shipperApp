@@ -19,12 +19,12 @@ class DriverApiCalls {
   late List jsonData;
 
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
   SelectedDriverController selectedDriverController =
       Get.put(SelectedDriverController());
 
   // final String driverApiUrl = FlutterConfig.get('driverApiUrl');
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   //GET DRIVERS BY TRANSPORTER ID-----------------------------------------------
 
@@ -60,7 +60,7 @@ class DriverApiCalls {
     driverList = [];
     String? traccarUser = transporterIdController.mobileNum.value;
     // String traccarPass = FlutterConfig.get("traccarPass");
-    String traccarPass = dotenv.env['traccarPass'].toString();
+    String traccarPass = dotenv.get('traccarPass');
 
     String basicAuth =
         'Basic ' + base64Encode(utf8.encode('$traccarUser:$traccarPass'));
@@ -188,7 +188,7 @@ class DriverApiCalls {
     String body = json.encode(data);
 
     // final String driverApiUrl = FlutterConfig.get("driverApiUrl");
-    final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+    final String driverApiUrl = dotenv.get('driverApiUrl');
 
     final response = await http.put(Uri.parse("$driverApiUrl/$driverId"),
         headers: <String, String>{
@@ -211,7 +211,7 @@ class DriverApiCalls {
 Future<DriverModel> getDriverByDriverId(
     {String? driverId, TruckModel? truckModel}) async {
   // final String driverApiUrl = FlutterConfig.get('driverApiUrl');
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   if (driverId != 'NA') {
     http.Response response =
@@ -254,7 +254,7 @@ Future<DriverModel> getDriverByDriverId(
 
 Future<void> disableActionOnDriver({String? driverId}) async {
   // final String driverApiUrl = FlutterConfig.get("driverApiUrl");
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   final response = await http.delete(
     Uri.parse("$driverApiUrl/$driverId"),

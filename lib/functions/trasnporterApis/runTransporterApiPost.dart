@@ -29,7 +29,7 @@ Future<String?> runTransporterApiPost(
 
     final String transporterApiUrl =
         // FlutterConfig.get("transporterApiUrl"); // transporterApiUrl is null
-           dotenv.env['transporterApiUrl'].toString();
+           dotenv.get('transporterApiUrl');
 
 
     Map data = userLocation != null

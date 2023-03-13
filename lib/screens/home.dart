@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   TransporterIdController transporterIdController =
-  Get.find<TransporterIdController>();
+  Get.put(TransporterIdController());
   var imageLinks ;
   bool isSwitched = false;
 

@@ -33,14 +33,14 @@ class BidButtonSendRequest extends StatelessWidget {
     required this.isNegotiating,
   });
 
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
 
   @override
   Widget build(BuildContext context) {
     ProviderData providerData =
         Provider.of<ProviderData>(context, listen: false);
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     getBidData() async {
       String? bidResponse = "";
       String? putResponse = "";

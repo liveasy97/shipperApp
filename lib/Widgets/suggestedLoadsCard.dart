@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 class SuggestedLoadsCard extends StatelessWidget {
   final LoadDetailsScreenModel loadDetailsScreenModel;
   final TransporterIdController tIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   SuggestedLoadsCard({Key? key, required this.loadDetailsScreenModel})
       : super(key: key);

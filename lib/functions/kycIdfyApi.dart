@@ -8,23 +8,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../screens/isolatedTransporterGetData.dart';
 import 'dart:math';
 
-// final String idfyAccountId = FlutterConfig.get('idfyAccountId');
-final String idfyAccountId = dotenv.env['idfyAccountId'].toString();
-
-// final String idfyApiKey = FlutterConfig.get('idfyApiKey');
-final String idfyApiKey = dotenv.env['idfyApiKey'].toString();
-
-// final String idfyKeyId = FlutterConfig.get('idfyKey_id');
-final String idfyKeyId = dotenv.env['idfyKey_id'].toString();
-
-// final String idfyOuId = FlutterConfig.get('idfyOu_id');
-final String idfyOuId = dotenv.env['idfyOu_id'].toString();
-
-// final String idfySecretKey = FlutterConfig.get('idfySecret_Key');
-final String idfySecretKey = dotenv.env['idfySecret_Key'].toString();
-
-// final String webHookUrl = FlutterConfig.get('webHookUrl');
-final String webHookUrl = dotenv.env['webHookUrl'].toString();
+final String idfyAccountId = dotenv.get('idfyAccountId');
+final String idfyApiKey = dotenv.get('idfyApiKey');
+final String idfyKeyId = dotenv.get('idfyKey_id');
+final String idfyOuId = dotenv.get('idfyOu_id');
+final String idfySecretKey = dotenv.get('idfySecret_Key');
+final String webHookUrl = dotenv.get('webHookUrl');
 
 var headers = {
   'Content-Type': 'application/json',
@@ -42,7 +31,8 @@ Future<String> postCallingIdfy() async {
     "task_id": "74f4c926-250c-43ca-9c53-453e87ceacd1",
     "group_id": "8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e",
     "data": {
-      "reference_id": "${transporterIdController.transporterId.value}",
+      //"reference_id": "${transporterIdController.transporterId.value}",
+      "reference_id": "12jdsgjdsbvjsb3251242123451542821465",
       "key_id": idfyKeyId,
       "ou_id": idfyOuId,
       "secret": idfySecretKey,

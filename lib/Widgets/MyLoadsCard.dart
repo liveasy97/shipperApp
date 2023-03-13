@@ -140,7 +140,7 @@ class MyLoadsCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${loadDetailsScreenModel.productType}'.tr +'| ${loadDetailsScreenModel.weight} ' +'tonne'.tr,
+                    '${loadDetailsScreenModel.productType}'.tr +'| ${loadDetailsScreenModel.weight} ' +'tons'.tr,
                     style: TextStyle(
                         fontSize: size_6, fontWeight: mediumBoldWeight),
                   ),
@@ -219,7 +219,7 @@ class MyLoadsCard extends StatelessWidget {
     ProviderData providerData =
         Provider.of<ProviderData>(context, listen: false);
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     switch (item) {
       case MenuItems.itemEdit:
         providerData.updateLoadingPointPostLoad(

@@ -52,7 +52,7 @@ class _WhatsappShareState extends State<WhatsappShare> {
     });
     String packageName = packageInfo.packageName;
     // String shareUrl = FlutterConfig.get('shareUrl').toString();
-    String shareUrl = dotenv.env['shareUrl'].toString();
+    String shareUrl = dotenv.get('shareUrl');
 
     final DynamicLinkParameters parameters = DynamicLinkParameters(
       uriPrefix: shareUrl,

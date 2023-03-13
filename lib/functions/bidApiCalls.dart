@@ -28,7 +28,7 @@ Future<String?> postBidAPi(loadId, rate, transporterIdController, unit) async {
     };
     String body = json.encode(data);
     // final String bidApiUrl = FlutterConfig.get('biddingApiUrl').toString();
-    final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+    final String bidApiUrl = dotenv.get('biddingApiUrl');
 
     final response = await http.post(Uri.parse("$bidApiUrl"),
         headers: <String, String>{
@@ -52,7 +52,7 @@ Future<String?> postBidAPi(loadId, rate, transporterIdController, unit) async {
 
 putBidForAccept(String? bidId) async {
   // final String bidApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String bidApiUrl = dotenv.get('biddingApiUrl');
 
   print('putBidUrl: $bidApiUrl/$bidId');
 
@@ -80,7 +80,7 @@ Future<String?> putBidForNegotiate(
   }
   try {
     // final String bidApiUrl = FlutterConfig.get('biddingApiUrl');
-    final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+    final String bidApiUrl = dotenv.get('biddingApiUrl');
 
     Map<String, dynamic> data = {
       "currentBid": rate,
@@ -109,7 +109,7 @@ Future<String?> putBidForNegotiate(
 
 declineBidFromShipperSide(String bidId) async {
   // final String bidApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String bidApiUrl = dotenv.get('biddingApiUrl');
 
 
   Map<String, bool> data = {'transporterApproval': false};
@@ -128,7 +128,7 @@ declineBidFromShipperSide(String bidId) async {
 declineBidFromTransporterSideSide(
     {required String bidId, required approvalVariable}) async {
   // final String bidApiUrl = FlutterConfig.get('biddingApiUrl');
-  final String bidApiUrl = dotenv.env['biddingApiUrl'].toString();
+  final String bidApiUrl = dotenv.get('biddingApiUrl');
 
 
   Map<String, bool> data = {'$approvalVariable': false};

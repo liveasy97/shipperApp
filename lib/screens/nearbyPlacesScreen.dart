@@ -66,7 +66,7 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen>
   MapUtil mapUtil = MapUtil();
   PolylinePoints polylinePoints = PolylinePoints();
   // String googleAPiKey = FlutterConfig.get("mapKey");
-  String googleAPiKey = dotenv.env['mapKey'].toString();
+  String googleAPiKey = dotenv.get('mapKey');
 
   late Uint8List markerIcon;
   CustomInfoWindowController _customInfoWindowController =

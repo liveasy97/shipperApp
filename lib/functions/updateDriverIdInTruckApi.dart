@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 updateDriverIdInTruckApi(selectedTruckId, selectedDriverId) async {
   // final String truckApiUrl = FlutterConfig.get("truckApiUrl").toString();
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
   Map data = {"driverId": selectedDriverId};
   String body = json.encode(data);

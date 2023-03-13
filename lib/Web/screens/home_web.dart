@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shipper_app/Widgets/accountVerification/accountPageUtil.dart';
+import 'package:shipper_app/responsive.dart';
+import 'package:shipper_app/screens/HelpScreen.dart';
+import 'package:shipper_app/screens/PostLoadScreens/postLoadScreen.dart';
 import '/constants/colors.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import '/screens/myLoadPages/myLoadsScreen.dart';
 import 'add_user_screen.dart';
-import 'company_details.dart';
-import 'login.dart';
 import 'package:sizer/sizer.dart';
 import '../logo.dart';
 
@@ -17,6 +18,7 @@ class HomeScreenWeb extends StatefulWidget {
 
 class _HomeScreenWebState extends State<HomeScreenWeb> {
   int _selectedIndex = 0;
+  int _index = 0;
   List<NavigationRailDestination> destinations = [
     const NavigationRailDestination(icon: Icon(Icons.space_dashboard), label: Text("Dashboard")),
     const NavigationRailDestination(icon: Icon(Icons.inventory_2_rounded), label: Text("My Loads")),
@@ -27,10 +29,15 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
     const NavigationRailDestination(icon: Icon(Icons.logout_outlined), label: Text("Logout")),
   ];
 
-  List<Widget> screens= const [
-    LoginScreen(),MyLoadsScreen(),AddUser(),
-    LoginScreen(),CompanyDetails(),AddUser(),
-    LoginScreen()
+  List<Widget> screens= [
+    PostLoadScreen(),
+    PostLoadScreen(),
+    AddUser(),
+    AccountPageUtil(),
+    HelpScreen(),
+    AddUser(),
+    AccountPageUtil(),
+    MyLoadsScreen(),
   ];
 
   @override
@@ -40,15 +47,15 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         backgroundColor: kLiveasyColor,
         title: TextButton(
           onPressed: (){
-           // print("Liveasy");
+           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreenWeb()));
           },
           child: SizedBox(
-            width: kIsWeb?8.8.w:8.9.w,
+            width: 9.w,
             child: Row(
               children: [
                 const ShipperImage(),
                 SizedBox(width: 0.5.w,),
-                Text('Liveasy',style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.bold,fontSize: 5.sp,color: Colors.white),),
+                Text('Liveasy',style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.bold,fontSize: Responsive.isDesktop(context)?5.sp:4.5.sp,color: Colors.white),),
               ],
             ),
           ),
@@ -57,14 +64,21 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
           SizedBox(
             width: 48,
             height: 40,
-            child: TextButton.icon(onPressed: (){}, icon: const Icon(Icons.notifications_none_outlined,color: Colors.white,), label: const Text('')),
+            child: TextButton.icon(onPressed: (){
+              setState(() {
+                _index = 5;
+              });
+            }, icon: const Icon(Icons.notifications_none_outlined,color: Colors.white,), label: const Text('')),
           ),
           SizedBox(
             width: 48,
             height: 40,
             child: TextButton.icon(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>screens[0]));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>screens[0]));
+                  setState(() {
+                    _index = 7;
+                  });
                   },
                 icon: const Icon(Icons.search_outlined,color: Colors.white,), label: const Text('')),
           ),
@@ -73,7 +87,11 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
             child: SizedBox(
               width: 48,
               height: 40,
-              child: TextButton.icon(onPressed: (){}, icon: const Icon(Icons.account_circle_rounded,color: Colors.white,), label: const Text('')),
+              child: TextButton.icon(onPressed: (){
+                setState(() {
+                  _index = 6;
+                });
+              }, icon: const Icon(Icons.account_circle_rounded,color: Colors.white,), label: const Text('')),
             ),
           ),
         ],
@@ -81,23 +99,24 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       body: Row(
         children: [
           NavigationRail(
-            extended: true,
+            extended: Responsive.isDesktop(context)?true:false,
             selectedIconTheme: const IconThemeData(color: kLiveasyColor),
             unselectedLabelTextStyle: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.bold,fontSize: 3.6.sp,color: Colors.black),
             selectedLabelTextStyle: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.bold,fontSize: 3.9.sp,color: kLiveasyColor),
             indicatorColor: const Color(0xFFC4C4C4),
-            labelType: kIsWeb?NavigationRailLabelType.none:NavigationRailLabelType.all,
+            labelType: Responsive.isDesktop(context)?NavigationRailLabelType.none:NavigationRailLabelType.all,
             destinations: destinations,
             selectedIndex: _selectedIndex,
             onDestinationSelected: (index){
               setState(() {
                 _selectedIndex = index;
+                _index = index;
               });
             },
             elevation: 20,
           ),
           const VerticalDivider(thickness: 1,width: 1,),
-          Expanded(child: Center(child: screens[_selectedIndex],))
+          Expanded(child: Center(child: screens[_index],))
         ],
       ),
     );

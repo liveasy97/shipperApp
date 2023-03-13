@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<List<LoadApiModel>> runSuggestedLoadApi() async {
   // String loadApiUrl = FlutterConfig.get("loadApiUrl").toString();
-  String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  String loadApiUrl = dotenv.get('loadApiUrl');
 
   var jsonData;
   Uri url = Uri.parse("$loadApiUrl");

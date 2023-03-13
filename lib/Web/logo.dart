@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shipper_app/responsive.dart';
 
 
 class ShipperImage extends StatelessWidget {
@@ -7,7 +8,7 @@ class ShipperImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(30, 30),
+      size: Size(Responsive.isDesktop(context)?30:20,Responsive.isDesktop(context)?30:20),
       painter: TransporterImageDrawing(),
     );
   }

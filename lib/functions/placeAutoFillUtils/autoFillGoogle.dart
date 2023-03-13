@@ -9,7 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // String kGoogleApiKey = FlutterConfig.get('mapKey').toString();
-String kGoogleApiKey = dotenv.env['mapKey'].toString();
+String kGoogleApiKey = dotenv.get('mapKey');
 
 Future<List<AutoFillMMIModel>> fillCityGoogle(String cityName,Position position) async {
   var request = http.Request(

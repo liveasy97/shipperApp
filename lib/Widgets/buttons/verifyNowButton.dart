@@ -15,7 +15,7 @@ class VerifyNowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     return GestureDetector(
       onTap: () {
         Get.offAll(NavigationScreen(initScreen: 4));

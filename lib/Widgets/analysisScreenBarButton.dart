@@ -11,7 +11,7 @@ class AnalysisScreenBarButton extends StatelessWidget {
 
   AnalysisScreenBarButton({required this.text, required this.value , required this.pageController});
 
-  AnalysisScreenNavController analysisScreenNavController = Get.find<AnalysisScreenNavController>();
+  AnalysisScreenNavController analysisScreenNavController = Get.put(AnalysisScreenNavController());
 
   @override
   Widget build(BuildContext context) {

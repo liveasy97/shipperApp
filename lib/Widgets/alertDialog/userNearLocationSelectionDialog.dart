@@ -23,7 +23,7 @@ class _UserNearLocationSelectionState extends State<UserNearLocationSelection> {
   List<String> lstS = ["1", "5", "10", "NONE"];
 
   TrucksNearUserController trucksNearUserController =
-      Get.find<TrucksNearUserController>();
+      Get.put(TrucksNearUserController());
 
   @override
   Widget build(BuildContext context) {

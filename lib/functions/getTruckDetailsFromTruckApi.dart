@@ -12,10 +12,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<List> getTruckDetailsFromTruckApi(BuildContext context) async {
   var providerData = Provider.of<ProviderData>(context, listen: false);
   List<TruckModel> truckDetailsList = [];
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
   var jsonData;
   // final String truckApiUrl = FlutterConfig.get('truckApiUrl').toString();
-  final String truckApiUrl = dotenv.env['truckApiUrl'].toString();
+  final String truckApiUrl = dotenv.get('truckApiUrl');
 
   try {
     http.Response response = await http.get(Uri.parse(

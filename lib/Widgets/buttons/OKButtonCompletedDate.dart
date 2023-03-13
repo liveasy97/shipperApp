@@ -19,8 +19,8 @@ import '../completedTextField.dart';
 
 class OkButtonCompletedDate extends StatelessWidget {
   CompletedDateController completedDateController =
-      Get.find<CompletedDateController>();
-  NavigationIndexController navigationIndexController = Get.find<NavigationIndexController>();
+      Get.put(CompletedDateController());
+  NavigationIndexController navigationIndexController = Get.put(NavigationIndexController());
   final String bookingId;
   OkButtonCompletedDate({Key? key, required this.bookingId}) : super(key: key);
   BookingApiCallsOrders bookingApiCallsOrders = BookingApiCallsOrders();

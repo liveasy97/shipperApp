@@ -16,7 +16,7 @@ String? device_Name;
 double? speed;
 double? heading;
 int alarmId = 1;
-TransporterIdController transporterIdController = Get.find<TransporterIdController>();
+TransporterIdController transporterIdController = Get.put(TransporterIdController());
 
 void backgroundTry() async {
   print("Background Try");

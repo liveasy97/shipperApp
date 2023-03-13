@@ -174,7 +174,7 @@ class _AddDriverAlertDialogState extends State<AddDriverAlertDialog> {
                       (driverNumberController.text
                           .startsWith(RegExp(r'[6-9]')))) {
                     TransporterIdController tIdController =
-                        Get.find<TransporterIdController>();
+                        Get.put(TransporterIdController());
                     String transporterId = '${tIdController.transporterId}';
                     // String? driverAdded = driverNameController.text;
                     // if (driverAdded == "") {

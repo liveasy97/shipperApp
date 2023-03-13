@@ -13,11 +13,11 @@ Future<String> postAccountVerificationDocuments(
       String? panFront,
       String? companyIdProof}) async {
   TransporterIdController transporterIdController =
-  Get.find<TransporterIdController>();
+  Get.put(TransporterIdController());
   try {
     final String documentApiUrl =
     // FlutterConfig.get("documentApiUrl").toString();
-    dotenv.env['documentApiUrl'].toString();
+    dotenv.get('documentApiUrl');
 
     Map data = companyIdProof != null?{
       "documents": [

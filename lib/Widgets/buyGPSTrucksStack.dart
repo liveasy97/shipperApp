@@ -39,7 +39,7 @@ class BuyGPSTrucksStack extends StatefulWidget {
 
 class _BuyGPSTrucksStackState extends State<BuyGPSTrucksStack> {
   // final String buyGPSApiUrl = FlutterConfig.get('buyGPSApiUrl');
-  final String buyGPSApiUrl = dotenv.env['buyGPSApiUrl'].toString();
+  final String buyGPSApiUrl = dotenv.get('buyGpsApiUrl');
   BuyGPSHudController updateButtonController = Get.put(BuyGPSHudController());
   // bool isDisable = false;
   BuyGPSApiCalls buyGPSApiCalls = BuyGPSApiCalls();

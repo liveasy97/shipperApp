@@ -65,7 +65,7 @@ Future<String?> runTransporterApiPostIsolated(
 
     final String transporterApiUrl =
         // FlutterConfig.get("transporterApiUrl").toString();
-    dotenv.env['transporterApiUrl'].toString();
+    dotenv.get('transporterApiUrl');
 
     Map data = userLocation != null
         ? {"phoneNo": mobileNum, "transporterLocation": userLocation}

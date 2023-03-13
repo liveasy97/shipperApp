@@ -35,7 +35,7 @@ class _BookNowButtonState extends State<BookNowButton> {
   TruckApiCalls truckApiCalls = TruckApiCalls();
   DriverApiCalls driverApiCalls = DriverApiCalls();
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   @override
   void initState() {

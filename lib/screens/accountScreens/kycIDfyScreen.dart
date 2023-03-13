@@ -1,23 +1,29 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shipper_app/Web/screens/home_web.dart';
+import '../../constants/spaces.dart';
+import '../../controller/navigationIndexController.dart';
 import '/functions/kycIdfyApi.dart';
 import '/functions/trasnporterApis/updateTransporterApi.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart';
 import '/controller/transporterIdController.dart';
-import '../../constants/colors.dart';
 
-class KYCScreen extends StatefulWidget {
-  const KYCScreen({Key? key}) : super(key: key);
+class KYCIDfyScreen extends StatefulWidget {
+  const KYCIDfyScreen({Key? key}) : super(key: key);
 
   @override
-  State<KYCScreen> createState() => _KYCScreenState();
+  State<KYCIDfyScreen> createState() => _KYCIDfyScreenState();
 }
 
-class _KYCScreenState extends State<KYCScreen> {
+class _KYCIDfyScreenState extends State<KYCIDfyScreen> {
   bool isLoaded = false;
   late String url;
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
+  NavigationIndexController navigationIndexController =
+      Get.put(NavigationIndexController());
 
   apiCalling() async {
     url = await postCallingIdfy();
@@ -44,6 +50,10 @@ class _KYCScreenState extends State<KYCScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final PlatformWebViewController _controller = PlatformWebViewController(
+      const PlatformWebViewControllerCreationParams(),
+    )..loadRequest(LoadRequestParams(uri: isLoaded ? Uri.parse(url) : Uri.parse('https:google.com')));
+    _controller.setJavaScriptMode(JavaScriptMode.unrestricted);
     WebViewController controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.white)
@@ -55,14 +65,18 @@ class _KYCScreenState extends State<KYCScreen> {
         }, onPageFinished: (String url) async {
           print("in onPageFinished------------------------------------->$url");
           if (url.contains(
-              "https://accounts.digitallocker.gov.in/oauth_partner/verify_otp")) {
+              "https://capture.kyc.idfy.com/document-fetcher/digilocker/callback/?code=")) {
             String status = await updateTransporterApi(
                 accountVerificationInProgress: true,
                 transporterId: transporterIdController.transporterId.value);
             if (status == "Success") {
-              Navigator.pop(context);
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const HomeScreenWeb()));
             }
           }
+          // This is used to redirect the page after successful completion of kyc and also here we are updating the transporter status
         }, onWebResourceError: (WebResourceError error) {
           print("in onError------------------------------------->$error");
         }, onNavigationRequest: (NavigationRequest request) {
@@ -72,16 +86,18 @@ class _KYCScreenState extends State<KYCScreen> {
           return NavigationDecision.navigate;
         }),
       )
-      // ..loadRequest(Uri.parse(
-      //     'https://capture.kyc.idfy.com/document-fetcher/digilocker/session-start/?reference_id=18110113&ou_id=ed728f377d5d&key_id=2753c121-d1d3-4402-8f4f-b896c9a024d5&h=2a85c15017accdf858dbe87d1a3966055c991273'));
       ..loadRequest(isLoaded ? Uri.parse(url) : Uri.parse('https:google.com'));
-    return Material(
+    //this is checking whether the redirect url is ready or not, if yes that will displayed else circular progress bar will be displayed.
+    return Scaffold(
+        body: Container(
+      padding: EdgeInsets.fromLTRB(space_4, space_4, space_4, 0),
       child: isLoaded
-          ? Padding(
-              padding: const EdgeInsets.only(top: 90.0),
-              child: WebViewWidget(controller: controller),
-            )
+          ? (!kIsWeb
+              ? WebViewWidget(controller: controller)
+              : PlatformWebViewWidget(
+                  PlatformWebViewWidgetCreationParams(controller: _controller),
+                ).build(context))
           : Center(child: CircularProgressIndicator()),
-    );
+    ));
   }
 }

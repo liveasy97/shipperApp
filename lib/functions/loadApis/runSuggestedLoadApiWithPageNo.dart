@@ -9,7 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 runSuggestedLoadApiWithPageNo(int i) async {
   // String loadApiUrl = FlutterConfig.get("loadApiUrl").toString();
-  String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  String loadApiUrl = dotenv.get('loadApiUrl');
 
   var jsonData;
   var loadData = [];
@@ -109,8 +109,7 @@ runSuggestedLoadApiWithPageNo(int i) async {
 }
 
 runWidgetSuggestedLoadApiWithPageNo(int i) async {
-  // String loadApiUrl = FlutterConfig.get("loadApiUrl").toString();
-  String loadApiUrl = dotenv.env['VAR_loadApiUrlNAME'].toString();
+  String loadApiUrl = dotenv.get("loadApiUrl").toString();
 
   var jsonData;
   var loadData = [];

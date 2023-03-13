@@ -5,13 +5,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void linkNotificationAndUserTraccar(String? userId, List<String?>? id) async {
   // String traccarUser = FlutterConfig.get("traccarUser");
-  String traccarUser = dotenv.env['traccarUser'].toString();
+  String traccarUser = dotenv.get('traccarUser');
 
   // String traccarPass = FlutterConfig.get("traccarPass");
-  String traccarPass = dotenv.env['traccarPass'].toString();
+  String traccarPass = dotenv.get('traccarPass');
 
   // String traccarApi = FlutterConfig.get("traccarApi");
-  String traccarApi = dotenv.env['traccarApi'].toString();
+  String traccarApi = dotenv.get('traccarApi');
 
 
   String basicAuth =

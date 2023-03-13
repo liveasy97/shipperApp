@@ -32,7 +32,7 @@ class DeclineButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ProviderData providerData = Provider.of<ProviderData>(context);
     NavigationIndexController navigationIndexController =
-        Get.find<NavigationIndexController>();
+        Get.put(NavigationIndexController());
     return Container(
       height: isBiddingDetails! ? null : 31,
       width: isBiddingDetails! ? null : 80,

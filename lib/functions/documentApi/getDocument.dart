@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
   getDocumentWithTransportId(String transporterId) async{
     final String documentApiUrl =
     // FlutterConfig.get('documentApiUrl').toString();
-    dotenv.env['documentApiUrl'].toString();
+    dotenv.get('documentApiUrl');
     var imageLink = [];
     var response = await http.get(
         // Uri.parse('http://document.dev.truckseasy.com:9090/document/transporter:d1b8af38-136d-4a5d-b350-9069d1b0268e'));

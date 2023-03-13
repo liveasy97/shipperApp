@@ -33,8 +33,7 @@ class _OngoingScreenState extends State<OngoingScreen> {
 
   bool OngoingProgress = true;
 
-  // final String bookingApiUrl = FlutterConfig.get('bookingApiUrl');
-  final String bookingApiUrl = dotenv.env['bookingApiUrl'].toString();
+  final String bookingApiUrl = dotenv.get('bookingApiUrl');
 
   List<OngoingCardModel> modelList = [];
 

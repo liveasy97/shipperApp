@@ -8,10 +8,10 @@ getLoadPosterDetailsFromPostLoadId(postLoadId) async {
   var jsonData;
   final String transporterApiUrl =
       // FlutterConfig.get("transporterApiUrl").toString();
-         dotenv.env['transporterApiUrl'].toString();
+         dotenv.get('transporterApiUrl');
 
   // final String shipperApiUrl = FlutterConfig.get('shipperApiUrl').toString();
-  final String shipperApiUrl = dotenv.env['shipperApiUrl'].toString();
+  final String shipperApiUrl = dotenv.get('shipperApiUrl');
 
   try {
     if (postLoadId.contains("transporter")) {

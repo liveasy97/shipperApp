@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-// import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shipper_app/constants/colors.dart';
@@ -14,7 +12,6 @@ import 'package:shipper_app/widgets/loadingWidgets/bottomProgressBarIndicatorWid
 import 'package:shipper_app/widgets/loadingWidgets/onGoingLoadingWidgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-
 class MyLoadsScreen extends StatefulWidget {
   const MyLoadsScreen({super.key});
 
@@ -26,12 +23,12 @@ class _MyLoadsScreenState extends State<MyLoadsScreen> {
   List<LoadDetailsScreenModel> myLoadList = [];
 
   // final String loadApiUrl = FlutterConfig.get("loadApiUrl");
-  final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  final String loadApiUrl = dotenv.get('loadApiUrl');
 
   ScrollController scrollController = ScrollController();
 
   TransporterIdController transporterIdController =
-  Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   int i = 0;
 
@@ -69,49 +66,48 @@ class _MyLoadsScreenState extends State<MyLoadsScreen> {
         child: loading
             ? const OnGoingLoadingWidgets()
             : myLoadList.isEmpty
-            ? Container(
-          margin: const EdgeInsets.only(top: 153),
-          child: Column(
-            children: [
-              const Image(
-                image: AssetImage('assets/images/EmptyLoad.png'),
-                height: 127,
-                width: 127,
-              ),
-              Text(
-                'noLoadAdded'.tr,
-                // 'Looks like you have not added any Loads!',
-                style: TextStyle(fontSize: size_8, color: grey),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        )
-            : RefreshIndicator(
-          color: lightNavyBlue,
-          onRefresh: () {
-            setState(() {
-              myLoadList.clear();
-              loading = true;
-            });
-            return getDataByPostLoadId(0);
-          },
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.only(bottom: space_15),
-            controller: scrollController,
-            itemCount: myLoadList.length,
-            itemBuilder: (context, index) =>
-            (index == myLoadList.length)//removed -1 here
-                ? Visibility(
-                visible: bottomProgressLoad,
-                child: const bottomProgressBarIndicatorWidget())
-                : MyLoadsCard(
-              loadDetailsScreenModel: myLoadList[index],
-            ),
-          ),
-        )
-    );
+                ? Container(
+                    margin: const EdgeInsets.only(top: 153),
+                    child: Column(
+                      children: [
+                        const Image(
+                          image: AssetImage('assets/images/EmptyLoad.png'),
+                          height: 127,
+                          width: 127,
+                        ),
+                        Text(
+                          'noLoadAdded'.tr,
+                          // 'Looks like you have not added any Loads!',
+                          style: TextStyle(fontSize: size_8, color: grey),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  )
+                : RefreshIndicator(
+                    color: lightNavyBlue,
+                    onRefresh: () {
+                      setState(() {
+                        myLoadList.clear();
+                        loading = true;
+                      });
+                      return getDataByPostLoadId(0);
+                    },
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: EdgeInsets.only(bottom: space_15),
+                      controller: scrollController,
+                      itemCount: myLoadList.length,
+                      itemBuilder: (context, index) => (index ==
+                              myLoadList.length) //removed -1 here
+                          ? Visibility(
+                              visible: bottomProgressLoad,
+                              child: const bottomProgressBarIndicatorWidget())
+                          : MyLoadsCard(
+                              loadDetailsScreenModel: myLoadList[index],
+                            ),
+                    ),
+                  ));
   }
 
   getDataByPostLoadId(int i) async {
@@ -120,53 +116,36 @@ class _MyLoadsScreenState extends State<MyLoadsScreen> {
         bottomProgressLoad = true;
       });
     }
+    String url =  'http://booking.dev.truckseasy.com:8080/booking';
     http.Response response = await http.get(Uri.parse(
         '$loadApiUrl?postLoadId=${transporterIdController.transporterId.value}&pageNo=$i'));
+    // '$loadApiUrl?postLoadId=$transporterId&pageNo=$i'));
+    //  url));
     var jsonData = json.decode(response.body);
     for (var json in jsonData) {
       LoadDetailsScreenModel loadDetailsScreenModel = LoadDetailsScreenModel();
       loadDetailsScreenModel.loadId = json['loadId'];
-      loadDetailsScreenModel.loadingPointCity =
-      json['loadingPointCity'] ?? 'NA';
-      loadDetailsScreenModel.loadingPoint =
-      json['loadingPoint'] ?? 'NA';
-      loadDetailsScreenModel.loadingPointState =
-      json['loadingPointState'] ?? 'NA';
-      loadDetailsScreenModel.loadingPointCity2 =
-      json['loadingPointCity2'] ?? 'NA';
-      loadDetailsScreenModel.loadingPoint2 =
-      json['loadingPoint2'] ?? 'NA';
-      loadDetailsScreenModel.loadingPointState2 =
-      json['loadingPointState2'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPointCity =
-      json['unloadingPointCity'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPoint =
-      json['unloadingPoint'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPointState =
-      json['unloadingPointState'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPointCity2 =
-      json['unloadingPointCity2'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPoint2 =
-      json['unloadingPoint2'] ?? 'NA';
-      loadDetailsScreenModel.unloadingPointState2 =
-      json['unloadingPointState2'] ?? 'NA';
+      loadDetailsScreenModel.loadingPointCity = json['loadingPointCity'] ?? 'NA';
+      loadDetailsScreenModel.loadingPoint = json['loadingPoint'] ?? 'NA';
+      loadDetailsScreenModel.loadingPointState = json['loadingPointState'] ?? 'NA';
+      loadDetailsScreenModel.loadingPointCity2 = json['loadingPointCity2'] ?? 'NA';
+      loadDetailsScreenModel.loadingPoint2 = json['loadingPoint2'] ?? 'NA';
+      loadDetailsScreenModel.loadingPointState2 = json['loadingPointState2'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPointCity = json['unloadingPointCity'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPoint = json['unloadingPoint'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPointState = json['unloadingPointState'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPointCity2 = json['unloadingPointCity2'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPoint2 = json['unloadingPoint2'] ?? 'NA';
+      loadDetailsScreenModel.unloadingPointState2 = json['unloadingPointState2'] ?? 'NA';
       loadDetailsScreenModel.postLoadId = json['postLoadId'];
-      loadDetailsScreenModel.truckType =
-      json['truckType'] ?? 'NA';
-      loadDetailsScreenModel.weight =
-      json['weight'] ?? 'NA';
-      loadDetailsScreenModel.productType =
-      json['productType'] ?? 'NA';
-      loadDetailsScreenModel.rate =
-      json['rate'] != null ? json['rate'].toString() : 'NA';
-      loadDetailsScreenModel.unitValue =
-      json['unitValue'] ?? 'NA';
-      loadDetailsScreenModel.noOfTyres =
-      json['noOfTyres'] ?? 'NA';
-      loadDetailsScreenModel.loadDate =
-      json['loadDate'] ?? 'NA';
-      loadDetailsScreenModel.postLoadDate =
-      json['postLoadDate'] ?? 'NA';
+      loadDetailsScreenModel.truckType = json['truckType'] ?? 'NA';
+      loadDetailsScreenModel.weight = json['weight'] ?? 'NA';
+      loadDetailsScreenModel.productType = json['productType'] ?? 'NA';
+      loadDetailsScreenModel.rate = json['rate'] != null ? json['rate'].toString() : 'NA';
+      loadDetailsScreenModel.unitValue = json['unitValue'] ?? 'NA';
+      loadDetailsScreenModel.noOfTyres = json['noOfTyres'] ?? 'NA';
+      loadDetailsScreenModel.loadDate = json['loadDate'] ?? 'NA';
+      loadDetailsScreenModel.postLoadDate = json['postLoadDate'] ?? 'NA';
       loadDetailsScreenModel.status = json['status'];
       if (mounted) {
         setState(() {

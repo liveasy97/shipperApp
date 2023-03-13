@@ -16,7 +16,7 @@ class truckAnalysisDoughnut extends StatefulWidget {
 class _truckAnalysisDoughnutState extends State<truckAnalysisDoughnut> {
   // Controller for the data source.
   AnalysisDataController analysisDataController =
-      Get.find<AnalysisDataController>();
+      Get.put(AnalysisDataController());
 
   @override
   void initState() {

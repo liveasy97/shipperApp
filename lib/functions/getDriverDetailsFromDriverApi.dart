@@ -14,9 +14,9 @@ Future<List> getDriverDetailsFromDriverApi(
     BuildContext context /*, driverIdList*/) async {
   var providerData = Provider.of<ProviderData>(context, listen: false);
   var jsonData;
-  TransporterIdController tIdController = Get.find<TransporterIdController>();
+  TransporterIdController tIdController = Get.put(TransporterIdController());
   // final String driverApiUrl = FlutterConfig.get('driverApiUrl').toString();
-  final String driverApiUrl = dotenv.env['driverApiUrl'].toString();
+  final String driverApiUrl = dotenv.get('driverApiUrl');
 
   List<DriverModel> driverDetailsList = [];
   try {

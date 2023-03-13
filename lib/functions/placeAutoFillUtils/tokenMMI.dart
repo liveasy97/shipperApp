@@ -27,7 +27,7 @@ Future<String> getMapMyIndiaToken() async {
   }as FutureOr Function(DatabaseEvent value));
   // if(clientIdMapMyIndia != null && clientSecretMapMyIndia != null){
 
-  TokenMMIController tokenMMIController = Get.find<TokenMMIController>();
+  TokenMMIController tokenMMIController = Get.put(TokenMMIController());
   Uri tokenUrl = Uri(
       scheme: "https",
       host: "outpost.mapmyindia.com",

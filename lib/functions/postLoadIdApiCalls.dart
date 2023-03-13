@@ -6,10 +6,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class PostLoadIdApiCalls {
   // final String transporterApiUrl = FlutterConfig.get("transporterApiUrl");
-  final String transporterApiUrl = dotenv.env['transporterApiUrl'].toString();
+  final String transporterApiUrl = dotenv.get('transporterApiUrl');
 
   // final String shipperApiUrl = FlutterConfig.get("shipperApiUrl");
-  final String shipperApiUrl = dotenv.env['shipperApiUrl'].toString();
+  final String shipperApiUrl = dotenv.get('shipperApiUrl');
 
   Future<Map> getDataByTransporterId(String transporterId) async {
     http.Response response =

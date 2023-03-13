@@ -9,7 +9,7 @@ getLoadDetailsFromLoadId(loadId) async {
   //canm be deleted later
   var jsonData;
   // final String loadApiUrl = FlutterConfig.get("loadApiUrl").toString();
-  final String loadApiUrl = dotenv.env['loadApiUrl'].toString();
+  final String loadApiUrl = dotenv.get('loadApiUrl');
 
   http.Response response = await http.get(Uri.parse("$loadApiUrl/$loadId"));
   try {

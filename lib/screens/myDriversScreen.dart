@@ -25,7 +25,7 @@ class MyDrivers extends StatefulWidget {
 class _MyDriversState extends State<MyDrivers> {
   DriverApiCalls driverApiCalls = DriverApiCalls();
   TransporterIdController transporterIdController =
-      Get.find<TransporterIdController>();
+      Get.put(TransporterIdController());
 
   ScrollController scrollController = ScrollController();
 
